@@ -2,26 +2,11 @@ import web
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
-import json as js
+import json
 
 urls = ('/cheese', 'Upload')
 
 class Upload():
-    
-    def GET(self):
-        web.header("Content-Type","text/html; charset=utf-8")
-        return """
-        <html>
-            <head></head>
-                <body>
-                    <form method="POST" enctype="multipart/form-data" action="">
-                        <input type="file" name="myfile" />
-                        <br/>
-                        <input type="submit" />
-                    </form>
-                </body>
-        </html>"""
-
     def POST(self):
         result = {}
         try:
@@ -79,7 +64,7 @@ class Upload():
             result["tipo-Error"] =  type(e).__name__
             
         finally:
-            return js.dumps(result)
+            return json.dumps(result)
         
 
 if __name__ == "__main__":
