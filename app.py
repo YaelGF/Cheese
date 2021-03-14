@@ -2,6 +2,7 @@ import web
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
+import json as js
 
 urls = ('/cheese', 'Upload')
 
@@ -78,7 +79,7 @@ class Upload():
             result["tipo-Error"] =  type(e).__name__
             
         finally:
-            return result
+            return js.dumps(result)
         
 
 if __name__ == "__main__":
